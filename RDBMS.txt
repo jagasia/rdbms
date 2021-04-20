@@ -1,0 +1,453 @@
+1) RDBMS and MySql
+
+why we need RDBMS?
+	In any project, there are 3 important layers/ services
+
+	1) Presentation Layers
+	2) Business Layers
+	3) Data Layers
+
+
+
+Presentation Layer?
+	user interface, input, output displaying, etc
+	HTML, CSS for presentation
+
+Business Layer
+	calculation 
+	computation
+	validation
+		done using Java
+
+Data Layer
+	storing data permanently
+	retrieving data which is already stored
+
+	the data should be stored as structured data, so that we can retrieve data easily
+	
+	Oracle (Oracle) isql, MySql (Oracle) mysql, db2 (IBM), sql server (t-sql) (microsoft)
+	these are all example for RDBMS
+
+RDBMS fits into the data layer of a project
+
+	so whatever we learn in this module, are going to be used in the data layer of our project.
+	the entire project is not done using RDBMS
+
+	some portions are done using HTML, CSS, Bootstrap
+	some portions like (login success/failure, validating data, calculating, etc 
+		can be done in client side or server side
+		client side means, we use javascript/jquery/typescript
+		server side means, we use java
+	some portions are done using mysql
+
+
+
+1970s, Dr. E.F.Codd 
+	he introduced a theory. "Relational" theory 
+before 1970s, there were also databases available
+
+they were managed by some programs called DataBase Management System
+	programs that helped 
+		storing
+		retrieving 
+		defining
+		modifying
+	data in a data base
+
+data is plural form of datum
+
+so datas is not an english word. data itself is a plural form
+
+data is stored in structured form. (NOT like a paragraph)
+
+if data is stored like a paragraph, can we filter or sort the data?
+	NO
+in MS Excel
+	the data is stored like a table. this is a structured data. means, we can filter or sort or even do complex things called as "Data Mining"
+	from raw data, we can get lot of business intelligence
+
+Relational DataBase Management System	(RDBMS)
+--------------------------------------------------
+
+what is database
+	the structured data stored in the form of tables
+dbms
+	software that helps us in storing and retrieving data
+rdbms
+	relational means?
+		what is relation?
+
+	relation    		relationship			relation
+
+	friend			friendship			friend
+
+what is a relation
+	any row - column format information is a "Relation"
+ex:
+	table is an example for relation
+
+all relations are not table.	For example, a query produces result in the form of row-colum.
+	it is a relation. but it is not a table
+
+table is stored permanently in the database
+	relation can be permanent (like table) or an output of query or produced as a product of two relations or union
+
+Relations can have relationship.
+
+
+In RDBMS, 
+	terminology
+
+terms used in RDBMS
+
+1) Entity				(a person, product, location, anything involved in business)
+		entity usually become table(s)			
+2) Relationship				(in case of M-M, this relationship becomes a table)
+3) Table				row column format (structured data)
+4) Record	/ 	Tuple		ROW
+5) attribute	/	Column		FIELD
+6) data					one piece of information (number, char, date)
+7) null					missing information (NOT space or anything)
+8) keys					
+	Primary Key
+	Foreign Key
+	Candidate Key
+	Alternate Key
+	Composite Key
+
+9) Operators
+	UNION			2 selections can be combined to form unique combination	
+	UNION ALL
+	INTERSECT
+	MINUS
+	PRODUCT
+	DIVIDE
+
+10) Normalization
+	Normal forms
+		1NF
+		2NF
+		3NF
+		BCNF
+11) Denormalization
+
+
+Whenever we do projects, we have lot of choice of modeling
+identify the entities involved in the business.
+
+ex:
+	we are doing a project for Bank
+entities involved in Bank business
+
+A Customer creates account in a Bank.
+
+A customer applies for a Loan. Bank approves or rejects the loan.
+
+underline the nouns
+
+
+Customer	is found as an entity directly involved in the business
+
+CUSTOMER is an entity
+entites have attributes
+
+CUSTOMER
+	ID		(To uniquely identify a customer)
+	FIRSTNAME
+	LASTNAME
+	ADDRESS
+	PHONE
+	EMAIL
+	DATEOFBIRTH
+	
+Our process goes like identifying each and every entity and their attributes
+
+E-R diagram will be formed by this way
+
+what is the relationship between CUSTOMER and BANK
+
+CUSTOMER has Account in the BANK
+
+THE RELATIONSHIP IS REPRESENTED IN MANY WAYS
+
+Entities will become table
+attributes will become column of the table
+
+CUSTOMER
+	ID		(To uniquely identify a customer)
+	FIRSTNAME
+	LASTNAME
+	ADDRESS
+	PHONE
+	EMAIL
+	DATEOFBIRTH
+	
+BANK
+	IFSC 		(Unique id)
+	Branch Name
+	Bank Name
+	address
+	phone
+	email
+
+i have represented the entites as TABLES
+but how will I represent the RELATIONSHIPS? where does the relationship fit in the entites?
+
+scientific method to do that
+---------------------------
+identify the degree of relationship between the entities
+
+1 to 1
+1 to Many
+Many to 1
+Many to Many
+
+1 to 1
+---------
+	Merge both the entities into 1 table
+	ex:
+		DEPARTMENT		and		DEPARTMENTHEAD
+		DHEAD BECOMES A COLUMN IN DEPARTMENT TABLE
+
+1 to Many
+---------
+	1 will join Many
+	ex:
+		EMPLOYEE		and 		DEPARTMENT
+		Many			-		1
+
+	the unique identifier of "1" (here it is DEPARTMENTID) WILL BECOME A COLUMN IN "Many" (Employee) table
+	employee table will add one more column "DepartmentID" thats how relationship between EMP AND DEPT table 
+
+Many to 1
+--------
+	same policy
+
+Many to Many
+------------
+	it is not possible to fit either to either table. So the relationship WILL BECOME A TABLE
+	Ex:
+		CUSTOMER	vs 		BANK
+		Many				Many
+
+	the relationship becomes a table (ACCOUNT)
+		ACCOUNT table contains (unique colummns of both CUSTOMER and BANK)
+	
+		ACNO		(UNIQU ID)
+		CID
+		BID
+
+
+RBMS and database, tables identification and creation is the first stage in any project
+
+ex:
+	if you ask me to create a signup form, i need to know what are the fields of input to be obtained from the user
+	that is decide by the tables in the database.
+	ex:
+		USER_MASTER could be the table name
+	signup and login are processes that is used to create an User in the database
+
+
+
+
+Data Models:
+-----------
+	Record Based Logical Model
+	Network Model
+	Relational Model
+	Entity Relational Model
+	Object Relational Model
+	
+
+8) keys					
+	Primary Key		syntax
+	Foreign Key		syntax		REFERS primary key of another table
+	Candidate Key		is candidate to be primary key
+	Alternate Key		when there is already a primary key. another column is also eligible
+	Composite Key
+
+Consider a table in your mind
+1) any column that is used to identify a row in the table uniquely is a
+	CANDIDATE KEY
+		associate id could be a candidate for finding a row uniquely in the table
+	sometimes, there is only one rajesh present in the table.
+	name also becomes a candidate for finding the row uniquely
+
+	candidate key is any column(s) helping us to find a row unique.
+
+	CANDIDATE KEY is a concept (or) idea. there is no syntax to create candidate key in any rdbms product
+
+
+Alternate key?
+	why ?
+	when multiple transactions use same key, we use alternate key for performance
+
+
+primary key		(UNIQUE and NOT NULL)
+	in a table we can define 1 primary key(based on 1 or more columns)
+	that primary key column
+		do not allow NULL	(mandatory)
+		do not allow duplicates	(unique)
+
+composite key?
+	comobination of 2 or more columns uniquely identify a row
+	primary key can be composite
+
+	billNo + productId		combined together is a primary key here
+
+
+ADD CONSTRAINT PK1 PRIMARY KEY(billNo,productId);
+
+foreign key references primary key of another table:
+ex:
+	PRODUCT TABLE
+	PID	PNAME	DESC 		PRICE
+	1	PENCIL	TO WRITE	10
+	2	SCALE	TO DRAW		15
+
+
+	SALES TABLE
+	BNO	BDATE			PID	QTY
+	1	12:11 20-04-2021	1	100
+	2	12:12 20-04-2021	NULL	50
+	3	12:12 20-04-2021	1	10
+		
+
+to restrict that only the available PID to be entered/allowed in SALES table, 
+PID OF SALES TABLE becomes FOREIGN KEY that references PRIMARY KEY OF PRODUCT TABLE
+
+
+FOREIGN KEY 
+	allows only values that are present in the primary key column of another table
+	allows duplicates
+	allows NULL
+
+
+While creating foreign key
+
+ADD CONSTRAINT PK1 PRIMARY KEY(billNo,productId);
+ADD CONSTRAINT FK1 FOREIGN KEY(billNo,productId) REFERENCES PRODUCT(billNo,productId);
+
+ADD CONSTRAINT FK1 FOREIGN KEY(billNo,productId) REFERENCES PRODUCT(billNo,productId) ON DELETE set null
+
+1) on delete cascade
+2) on delete set null
+3) on delete restrict		(DEFAULT)
+
+usually when we delete a row in primary key table (master table)
+if there are records found in foreign key table (details/transaction table)
+master table will not allow deleting records that are referenced by details table
+	this is "ON DELETE RESTRICT"
+
+cascade (means, chain reaction)
+	if primary key table record is deleted, corresponding referenced records in foreign ktable also deleted)
+
+set null	(means, when a master table record is deleted, then corresponding referenced
+	records in details table value will become NULL. only that columns that refers, become null
+
+USER_MASTER
+ORDER_DETAILS	
+	Why the table name is _MASTER	or _DETAILS???????
+
+MASTER TABLE has primary key
+DETAILS TABLE has foreign key
+
+
+SELECTION and PROJECTION
+
+SELECTION means
+	ONLY RECORDS THAT MEET CRITERIA 
+	ex:
+		table has 100 rows. i dont want all rows to be displayed.
+		i want to display only rows that meet a criteria.
+		this is selection
+
+PROJECTION
+	table has 5 columns (example)
+	i dont want to project all columns, i want to project only 3 columns (example)
+		this is projection
+
+
+UNION
+	there are lot of players records in IPL database
+
+	selection1:
+		players list of 2008 CSK team
+	selection2:
+		players list of 2018 CSK team
+
+	(uniquely) combine and produce the result
+
+	first selection produces 11 rows
+	second selection produces 11 rows
+
+	so finally how many rows i can expect?	
+		i can expect maximum 22 but not necessarily 22.
+		Dhoni, Jadeja, Raina were present in both the selection list
+	they must appear only once in the result
+
+UNION ALL
+	if i want union of both the selection without eliminating the duplicates,
+		11+11 always produce 22
+	Dhoni, Jadeja, Raina will appear twice in the list
+
+
+INTERSECT
+	if i do the intersect in this 2 selection lists,
+		i will get
+		Dhoni, Jadeja, Raina
+
+	if only these 3 players played in both the selection lists
+
+MINUS
+	A-B
+	all the players of 2008
+		minus the intersect of both list
+
+	except Dhoni, Jadeja, Raina, 
+		we will all from 2008 list
+
+PRODUCT
+	We get comibination of 11 * 11 records
+	first row of first result combined with all rows of second list and so on
+
+	121 rows
+
+DIVIDE
+	very rarely used
+	ex:
+		CUSTOMER vs PRODUCT
+
+	Display all customers who have purchased all the products in our company
+
+	C001 will be printed only if C001 is found with ALL PRODUCT IDS in sales table
+
+-----------------------------------------
+Normalization
+	is a scientific approach in converting the E-R diagrams into tables
+	we need to identify the redundancy of data in the tables
+	we may split the table into multiple tables so that redundancy is minimized or eliminated
+
+
+	IDENTIFY THE REDUNDANCY IN THE DATA
+	FIND REPEATING GROUP
+	FIND NON REPEATING GROUP
+
+
+Large table is split into small and smaller tables so that redundancy is minimized
+
+	stage 1 :		CREATING A TABLE IN 1st normal form	( a table should contain every cell having only one data
+		ex:		RAMA KRISHNA is a data
+			NAME COLUMN IS NOW SPLIT INTO FIRSTNAME AND LASTNAME
+			
+	stage 2 :		CREATING A TABLE IN 2nd normal form
+	stage 3 :		3NF
+
+Boyce Codd Normal Form:
+		Boyce and Codd (2 computer scientists) invented this normal form
+
+IDENFITY THE NORMAL FORMS
+
+	a table
+
+
